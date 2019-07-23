@@ -12,13 +12,21 @@ DeGAUSS arguments specific to this container:
 
 Example call (that will work with example file included in repository):
 
+**MacOS**
+
 ```
 docker run --rm -v "$PWD":/tmp docker.pkg.github.com/cole-brokamp/pepr_greenspace:0.2 my_address_file_geocoded.csv
 ```
 
-In the above example call, replace `geocoded_csv_file.csv` with the name of your geocoded csv file.
+**Microsoft Windows**
 
-Some progress messages will be printed and when complete, the program will save the output as the same name as the input file name, but with `pepr_greenspace` appended, e.g. `geocoded_csv_file_pepr_greenspace_cchmc.csv`
+```
+docker run --rm -v "%cd%":/tmp docker.pkg.github.com/cole-brokamp/pepr_greenspace:0.2 my_address_file_geocoded.csv
+```
+
+In the above example call, replace `my_address_file_geocoded.csv` with the name of your geocoded csv file.
+
+Some progress messages will be printed and when complete, the program will save the output as the same name as the input file name, but with `pepr_greenspace` appended, e.g. `my_address_file_geocoded_pepr_greenspace.csv`
 
 ## DeGAUSS Details
 
