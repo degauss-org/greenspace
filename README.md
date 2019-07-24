@@ -18,7 +18,7 @@ DeGAUSS arguments specific to this container:
 
 - `file_name`: name of a CSV file in the current working directory with columns named `lat` and `lon`
 
-#### Example calls (that will work with example file included in repository):
+### Example calls (that will work with example file included in repository):
 
 **MacOS**
 
