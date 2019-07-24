@@ -1,0 +1,19 @@
+- Package: argparser
+  Repository: CRAN
+  Version: '0.4'
+- Package: dplyr
+  Repository: CRAN
+  Version: 0.8.1
+- Package: readr
+  Repository: CRAN
+  Version: 1.3.1
+- Package: sp
+  Repository: CRAN
+  Version: 1.3-1
+- Package: raster
+  Repository: CRAN
+  Version: 2.9-5
+- Package: sf
+  Repository: CRAN
+  Version: 0.7-4
+- ~

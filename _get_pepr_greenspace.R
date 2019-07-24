@@ -1,7 +1,5 @@
 #!/usr/local/bin/Rscript
 
-# automagic::make_deps_file(directory=getwd())
-
 suppressPackageStartupMessages(library(argparser))
 p <- arg_parser('return greenspace for geocoded CSV file')
 p <- add_argument(p, 'file_name', help = 'name of geocoded csv file')
