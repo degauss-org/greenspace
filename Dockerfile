@@ -18,5 +18,4 @@ COPY . /app
 
 WORKDIR /tmp
 
-RUN chmod +x /app/_get_pepr_greenspace.R
 ENTRYPOINT ["/app/_get_pepr_greenspace.R"]
