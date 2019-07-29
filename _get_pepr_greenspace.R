@@ -35,7 +35,7 @@ d <- d %>%
 
 ### raster file is on GRAPPH Sharepoint site in __greenspace folder
 message('\nloading greenspace raster file...')
-evi_2018 <- raster::raster("evi_June_2018_5072.tif")
+evi_2018 <- raster::raster("/app/evi_June_2018_5072.tif")
 
 message('\nfinding greenspace for each point...')
 message('\nusing 500 m buffer...')
@@ -65,10 +65,10 @@ evi_buf_2500 <- raster::extract(evi_2018,
                                small = TRUE,
                                df = TRUE)
 
-d <- d %>% 
+d <- d %>%
   mutate(evi_500 = evi_buf_500$evi_June_2018_5072 * 0.0001,
          evi_1500 = evi_buf_1500$evi_June_2018_5072 * 0.0001,
-         evi_2500 = evi_buf_2500$evi_June_2018_5072 * 0.0001) 
+         evi_2500 = evi_buf_2500$evi_June_2018_5072 * 0.0001)
 
 # remove transformed coords and add back "old" coords
 d <- d %>%
