@@ -35,7 +35,7 @@ d <- d %>%
 
 ### raster file is on GRAPPH Sharepoint site in __greenspace folder
 message('\nloading greenspace raster file...')
-evi_2018 <- raster::raster("evi_June_2018_5072.tif")
+evi_2018 <- raster::raster("/app/evi_June_2018_5072.tif")
 
 message('\nfinding greenspace for each point...')
 message('\nusing 500 m buffer...')
