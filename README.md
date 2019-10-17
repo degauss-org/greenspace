@@ -46,5 +46,5 @@ This software is part of DeGAUSS and uses its same [license](https://github.com/
 
 To create the EVI raster, individual tiles were downloaded from [LP DAAC](https://lpdaac.usgs.gov/) and combined using the [MODIS](https://github.com/MatMatt/MODIS) R package. Then the raster was clipped and masked to the contiguous United States boundaries.
 
-The raster file needed to run this container can be downloaded [here](https://cchmc.sharepoint.com/:i:/s/GRAPPH/EWBDVmOnRSFKpGHyLQa12aoB11KV9huUZ04bsY8VIRNDcA?e=zHLXnv). 
+The raster file needed to build this container can be downloaded [here](https://s3.amazonaws.com/geomarker.grapph/greenspace/pepr_evi_June_2018_5072.tif). 
 
