@@ -1,6 +1,6 @@
 # degauss/greenspace <a href='https://degauss-org.github.io/DeGAUSS/'><img src='DeGAUSS_hex.png' align="right" height="138.5" /></a>
 
-> DeGAUSS container that calculates average greenness within 500 m, 1500 m, and 2500 m buffers for PEPR multi-site study
+> DeGAUSS container that calculates average greenness within 500 m, 1500 m, and 2500 m buffers
 
 [![Docker Build Status](https://img.shields.io/docker/automated/degauss/greenspace)](https://hub.docker.com/repository/docker/degauss/greenspace/tags)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/degauss-org/greenspace)](https://github.com/degauss-org/greenspace/releases)
