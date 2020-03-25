@@ -1,8 +1,21 @@
-# degauss/pepr_greenspace
+# degauss/greenspace <a href='https://degauss-org.github.io/DeGAUSS/'><img src='DeGAUSS_hex.png' align="right" height="138.5" /></a>
 
 > DeGAUSS container that calculates average greenness within 500 m, 1500 m, and 2500 m buffers for PEPR multi-site study
 
-## Enhanced Vegetation Index (EVI)
+[![Docker Build Status](https://img.shields.io/docker/automated/degauss/greenspace)](https://hub.docker.com/repository/docker/degauss/greenspace/tags)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/degauss-org/greenspace)](https://github.com/degauss-org/greenspace/releases)
+
+## DeGAUSS example call
+
+If `my_address_file_geocoded.csv` is a file in the current working directory with coordinate columns named `lat` and `lon`, then
+
+```sh
+docker run --rm -v $PWD:/tmp degauss/greenspace:0.1 my_address_file_geocoded.csv
+```
+
+will produce `my_address_file_geocoded_greenspace.csv` with three added columns named `evi_500`, `evi_1500`, and `evi_2500`.
+
+## geomarker methods
 
 The Enhanced Vegetation Index (EVI) is a measure of greenness that ranges from -0.2 to 1, with higher values corresponding to more vegetation.
 
@@ -12,39 +25,16 @@ A cloud-free composite EVI raster at a resolution of 250 × 250 m was created by
 
 Residential greenspace is estimated by averaging EVI values within 500, 1500, and 2500 m of each geocoded address.
 
-## Using
+## geomarker data
 
-DeGAUSS arguments specific to this container:
+To create the EVI raster, individual tiles were downloaded from the [LP DAAC](https://lpdaac.usgs.gov/) MOD13Q1 product and combined using the [`{MODIS}`](https://github.com/MatMatt/MODIS) R package. Then the raster was clipped and masked to the contiguous United States boundaries.
 
-- `file_name`: name of a CSV file in the current working directory with columns named `lat` and `lon`
+The raster file needed to build this container can be downloaded [here](https://s3.amazonaws.com/geomarker/greenspace/pepr_evi_June_2018_5072.tif). 
 
-### Example calls (that will work with example file included in repository):
+## DeGAUSS details
 
-**MacOS**
+For detailed documentation on DeGAUSS, including general usage and installation, please see the [DeGAUSS README](https://github.com/degauss-org/DeGAUSS).
 
-```
-docker run --rm -v "$PWD":/tmp degauss/pepr_greenspace:0.1 my_address_file_geocoded.csv
-```
 
-**Microsoft Windows**
 
-```
-docker run --rm -v "%cd%":/tmp degauss/pepr_greenspace:0.1 my_address_file_geocoded.csv
-```
-
-In the above example call, replace `my_address_file_geocoded.csv` with the name of your geocoded csv file.
-
-Some progress messages will be printed and when complete, the program will save the output as the same name as the input file name, but with `pepr_greenspace` appended, e.g. `my_address_file_geocoded_pepr_greenspace.csv`
-
-## DeGAUSS Details
-
-For detailed documentation on DeGAUSS, including general usage and installation, please see the [DeGAUSS](https://github.com/cole-brokamp/DeGAUSS) README.
-
-This software is part of DeGAUSS and uses its same [license](https://github.com/cole-brokamp/DeGAUSS/blob/master/LICENSE.txt).
-
-**Note about data:** 
-
-To create the EVI raster, individual tiles were downloaded from [LP DAAC](https://lpdaac.usgs.gov/) and combined using the [MODIS](https://github.com/MatMatt/MODIS) R package. Then the raster was clipped and masked to the contiguous United States boundaries.
-
-The raster file needed to build this container can be downloaded [here](https://s3.amazonaws.com/geomarker.grapph/greenspace/pepr_evi_June_2018_5072.tif). 
 
