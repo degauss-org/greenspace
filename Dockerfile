@@ -1,21 +1,25 @@
-FROM rocker/geospatial:3.6.0
+FROM rocker/r-ver:3.6.1
 
-LABEL maintainer="Cole Brokamp <cole.brokamp@gmail.com>"
+# install a newer-ish version of renv, but the specific version we want will be restored from the renv lockfile
+ENV RENV_VERSION 0.8.3-81
+RUN R --quiet -e "source('https://install-github.me/rstudio/renv@${RENV_VERSION}')"
 
-RUN echo "options(repos = c(CRAN = 'https://cran.rstudio.com/'), prompt='R > ', download.file.method = 'libcurl')" > /.Rprofile
+WORKDIR /app
 
-RUN R -e "devtools::install_version(package = 'argparser', version = '0.4', upgrade = FALSE, quiet = TRUE)"
-RUN R -e "devtools::install_version(package = 'dplyr', version = '0.8.1', upgrade = FALSE, quiet = TRUE)"
-RUN R -e "devtools::install_version(package = 'readr', version = '1.3.1', upgrade = FALSE, quiet = TRUE)"
-RUN R -e "devtools::install_version(package = 'sp', version = '1.3-1', upgrade = FALSE, quiet = TRUE)"
-RUN R -e "devtools::install_version(package = 'raster', version = '2.9-5', upgrade = FALSE, quiet = TRUE)"
-RUN R -e "devtools::install_version(package = 'sf', version = '0.7-4', upgrade = FALSE, quiet = TRUE)"
+RUN apt-get update \
+&& apt-get install -yqq --no-install-recommends \
+libgdal-dev=2.1.2+dfsg-5 \
+libgeos-dev=3.5.1-3 \
+libudunits2-dev=2.2.20-1+b1 \
+libproj-dev=4.9.3-1 \
+&& apt-get clean
 
-RUN R -e "library(argparser); library(dplyr); library(readr); library(sp); library(raster); library(sf)"
+COPY renv.lock .
+RUN R --quiet -e "renv::restore()"
 
-RUN mkdir /app
-COPY . /app
+COPY evi_June_2018_5072.tif .
+COPY greenspace.R .
 
 WORKDIR /tmp
 
-ENTRYPOINT ["/app/_get_pepr_greenspace.R"]
+ENTRYPOINT ["/app/greenspace.R"]
