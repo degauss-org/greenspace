@@ -10,7 +10,7 @@
 If `my_address_file_geocoded.csv` is a file in the current working directory with coordinate columns named `lat` and `lon`, then
 
 ```sh
-docker run --rm -v $PWD:/tmp degauss/greenspace:0.1 my_address_file_geocoded.csv
+docker run --rm -v $PWD:/tmp degauss/greenspace:0.2 my_address_file_geocoded.csv
 ```
 
 will produce `my_address_file_geocoded_greenspace.csv` with three added columns named `evi_500`, `evi_1500`, and `evi_2500`.
