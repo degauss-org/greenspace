@@ -4,6 +4,7 @@ suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(readr))
 suppressPackageStartupMessages(library(sp))    #required for raster package
 suppressPackageStartupMessages(library(raster))
+suppressPackageStartupMessages(library(rgdal))
 suppressPackageStartupMessages(library(sf))
 suppressPackageStartupMessages(library(tidyr))
 suppressPackageStartupMessages(library(dplyr))

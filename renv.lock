@@ -212,6 +212,20 @@
       "Repository": "CRAN",
       "Hash": "60167b7ec3de99e76ff406aaf0f83bb4"
     },
+    "renv": {
+      "Package": "renv",
+      "Version": "0.8.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "4ee3e91b679fbd7102c1fd51f9a4bc59"
+    },
+    "rgdal": {
+      "Package": "rgdal",
+      "Version": "1.4-8",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "c98d224ecc4f7608021ef52cdb56030c"
+    },
     "rlang": {
       "Package": "rlang",
       "Version": "0.4.5",
