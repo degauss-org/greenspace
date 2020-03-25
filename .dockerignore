@@ -1,0 +1,7 @@
+# ignore everything
+**
+
+# except what we need
+!/renv.lock
+!/greenspace.R
+!/evi_June_2018_5072.tif
