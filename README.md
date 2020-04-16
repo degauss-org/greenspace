@@ -3,7 +3,7 @@
 > DeGAUSS container that calculates average greenness within 500 m, 1500 m, and 2500 m buffers
 
 [![Docker Build Status](https://img.shields.io/docker/automated/degauss/greenspace)](https://hub.docker.com/repository/docker/degauss/greenspace/tags)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/degauss-org/greenspace)](https://github.com/degauss-org/greenspace/releases)
+[![GitHub Latest Tag](https://img.shields.io/github/v/tag/degauss-org/greenspace)](https://github.com/degauss-org/greenspace/releases)
 
 ## DeGAUSS example call
 
