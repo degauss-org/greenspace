@@ -2,7 +2,6 @@
 
 > DeGAUSS container that calculates average greenness within 500 m, 1500 m, and 2500 m buffers
 
-[![Docker Build Status](https://img.shields.io/docker/automated/degauss/greenspace)](https://hub.docker.com/repository/docker/degauss/greenspace/tags)
 [![GitHub Latest Tag](https://img.shields.io/github/v/tag/degauss-org/greenspace)](https://github.com/degauss-org/greenspace/releases)
 
 ## DeGAUSS example call
@@ -10,7 +9,7 @@
 If `my_address_file_geocoded.csv` is a file in the current working directory with coordinate columns named `lat` and `lon`, then
 
 ```sh
-docker run --rm -v $PWD:/tmp degauss/greenspace:0.2 my_address_file_geocoded.csv
+docker run --rm -v $PWD:/tmp ghcr.io/degauss-org/greenspace:0.2 my_address_file_geocoded.csv
 ```
 
 will produce `my_address_file_geocoded_greenspace.csv` with three added columns named `evi_500`, `evi_1500`, and `evi_2500`.
