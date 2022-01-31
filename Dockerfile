@@ -1,5 +1,16 @@
 FROM rocker/r-ver:3.6.1
 
+# DeGAUSS container metadata
+ENV degauss_name="greenspace"
+ENV degauss_version="0.2"
+ENV degauss_description="enhanced vegetation index"
+
+# add OCI labels based on environment variables too
+LABEL "org.degauss.name"="${degauss_name}"
+LABEL "org.degauss.version"="${degauss_version}"
+LABEL "org.degauss.description"="${degauss_description}"
+LABEL "org.degauss.argument"="${degauss_argument}"
+
 # install a newer-ish version of renv, but the specific version we want will be restored from the renv lockfile
 ENV RENV_VERSION 0.8.3-81
 RUN R --quiet -e "source('https://install-github.me/rstudio/renv@${RENV_VERSION}')"
