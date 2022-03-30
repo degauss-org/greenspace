@@ -1,8 +1,8 @@
-FROM rocker/r-ver:3.6.1
+FROM rocker/r-ver:4.0.5
 
 # DeGAUSS container metadata
 ENV degauss_name="greenspace"
-ENV degauss_version="0.2"
+ENV degauss_version="0.3.0"
 ENV degauss_description="enhanced vegetation index"
 
 # add OCI labels based on environment variables too
@@ -11,26 +11,27 @@ LABEL "org.degauss.version"="${degauss_version}"
 LABEL "org.degauss.description"="${degauss_description}"
 LABEL "org.degauss.argument"="${degauss_argument}"
 
-# install a newer-ish version of renv, but the specific version we want will be restored from the renv lockfile
-ENV RENV_VERSION 0.8.3-81
-RUN R --quiet -e "source('https://install-github.me/rstudio/renv@${RENV_VERSION}')"
+RUN R --quiet -e "install.packages('remotes', repos = c(CRAN = 'https://packagemanager.rstudio.com/all/__linux__/focal/latest'))"
+
+RUN R --quiet -e "remotes::install_github('rstudio/renv@0.15.4')"
 
 WORKDIR /app
 
 RUN apt-get update \
-&& apt-get install -yqq --no-install-recommends \
-libgdal-dev=2.1.2+dfsg-5 \
-libgeos-dev=3.5.1-3 \
-libudunits2-dev=2.2.20-1+b1 \
-libproj-dev=4.9.3-1 \
-&& apt-get clean
+    && apt-get install -yqq --no-install-recommends \
+    libgdal-dev \
+    libgeos-dev \
+    libudunits2-dev \
+    libproj-dev \
+    && apt-get clean
 
 COPY renv.lock .
-RUN R --quiet -e "renv::restore()"
 
-COPY evi_June_2018_5072.tif .
-COPY greenspace.R .
+RUN R --quiet -e "renv::restore(repos = c(CRAN = 'https://packagemanager.rstudio.com/all/__linux__/focal/latest'))"
+
+ADD https://geomarker.s3-us-east-2.amazonaws.com/modis_evi_ndvi/evi_June_2018_5072.tif evi_June_2018_5072.tif
+COPY entrypoint.R .
 
 WORKDIR /tmp
 
-ENTRYPOINT ["/app/greenspace.R"]
+ENTRYPOINT ["/app/entrypoint.R"]
