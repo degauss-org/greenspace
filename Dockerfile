@@ -2,7 +2,7 @@ FROM rocker/r-ver:4.0.5
 
 # DeGAUSS container metadata
 ENV degauss_name="greenspace"
-ENV degauss_version="0.3.0"
+ENV degauss_version="0.3.1"
 ENV degauss_description="enhanced vegetation index"
 
 # add OCI labels based on environment variables too
@@ -29,7 +29,7 @@ COPY renv.lock .
 
 RUN R --quiet -e "renv::restore(repos = c(CRAN = 'https://packagemanager.rstudio.com/all/__linux__/focal/latest'))"
 
-ADD https://geomarker.s3-us-east-2.amazonaws.com/modis_evi_ndvi/evi_June_2018_5072.tif evi_June_2018_5072.tif
+ADD https://github.com/degauss-org/greenspace/releases/download/0.3.0/evi_June_2018_5072.tif evi_June_2018_5072.tif
 COPY entrypoint.R .
 
 WORKDIR /tmp
