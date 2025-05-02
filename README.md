@@ -8,10 +8,10 @@
 If `my_address_file_geocoded.csv` is a file in the current working directory with coordinate columns named `lat` and `lon`, then the [DeGAUSS command](https://degauss.org/using_degauss.html#DeGAUSS_Commands):
 
 ```sh
-docker run --rm -v $PWD:/tmp ghcr.io/degauss-org/greenspace:0.3.0 my_address_file_geocoded.csv
+docker run --rm -v $PWD:/tmp ghcr.io/degauss-org/greenspace:0.3.1 my_address_file_geocoded.csv
 ```
 
-will produce `my_address_file_geocoded_greenspace_0.3.0.csv` with added columns:
+will produce `my_address_file_geocoded_greenspace_0.3.1.csv` with added columns:
 
 - **`evi_500`**: average enhanced vegetation index within a 500 meter buffer radius
 - **`evi_1500`**: average enhanced vegetation index within a 1500 meter buffer radius
