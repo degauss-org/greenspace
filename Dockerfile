@@ -2,7 +2,7 @@ FROM rocker/r-ver:4.0.5
 
 # DeGAUSS container metadata
 ENV degauss_name="greenspace"
-ENV degauss_version="0.3.0"
+ENV degauss_version="0.3.1"
 ENV degauss_description="enhanced vegetation index"
 
 # add OCI labels based on environment variables too
